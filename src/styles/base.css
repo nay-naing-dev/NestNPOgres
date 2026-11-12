@@ -1,0 +1,255 @@
+:root {
+  --bg: #eef1f5;
+  --surface: #ffffff;
+  --sunken: #e4e9f0;
+  --ink: #16213a;
+  --muted: #56627b;
+  --line: #d3dae5;
+  --nest: #cf1f4d; /* NestJS side of the story */
+  --pg: #2a69a0; /* PostgreSQL side of the story */
+  --flow: #d9860a; /* data in motion */
+  --ok: #1c8660;
+  --code-bg: #131c31;
+  --code-ink: #dfe6f3;
+  --code-line: #2a3654;
+
+  --font-display: 'Bricolage Grotesque', 'Noto Sans Myanmar', 'Myanmar Text', sans-serif;
+  --font-body: 'Figtree', 'Noto Sans Myanmar', 'Myanmar Text', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  --sidebar: 304px;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0e1524;
+  --surface: #161f34;
+  --sunken: #1c2740;
+  --ink: #e6eaf3;
+  --muted: #98a3ba;
+  --line: #2b3652;
+  --nest: #ff6289;
+  --pg: #6fb3ea;
+  --flow: #ffb649;
+  --ok: #4fcb9c;
+  --code-bg: #0a101d;
+  --code-line: #232e49;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  /* Burmese stacks marks above and below the baseline, so it needs more leading than Latin. */
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.45;
+  margin: 0;
+  font-weight: 700;
+}
+
+a {
+  color: var(--pg);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pg);
+  outline-offset: 2px;
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  text-decoration: none;
+  color: var(--ink);
+}
+.btn:hover {
+  border-color: var(--ink);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--pg);
+  border-color: var(--pg);
+  color: #fff;
+}
+
+/* ---------- Lesson prose ---------- */
+.prose {
+  max-width: 68ch;
+}
+.prose h2 {
+  font-size: 1.5rem;
+  margin: 2.6rem 0 0.6rem;
+}
+.prose h3 {
+  font-size: 1.13rem;
+  margin: 1.8rem 0 0.4rem;
+}
+.prose p {
+  margin: 0 0 1rem;
+}
+.prose ul,
+.prose ol {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+}
+.prose li {
+  margin-bottom: 0.3rem;
+}
+.prose code,
+.inline-code {
+  font-size: 0.86em;
+  background: var(--sunken);
+  padding: 2px 6px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 0 1.2rem;
+  font-size: 0.93rem;
+}
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 6px 12px 6px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.prose th {
+  font-weight: 600;
+  color: var(--muted);
+}
+.t-nest {
+  color: var(--nest);
+  font-weight: 600;
+}
+.t-pg {
+  color: var(--pg);
+  font-weight: 600;
+}
+
+/* ---------- Panels shared by the interactive blocks ---------- */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin: 1.6rem 0 2rem;
+  overflow: hidden;
+}
+.panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.panel-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  margin-right: auto;
+}
+.panel-kind {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0 10px;
+  border-radius: 99px;
+  border: 1.5px solid currentColor;
+}
+
+/* ---------- highlight.js tokens on the dark code surface ---------- */
+.hljs-keyword,
+.hljs-built_in,
+.hljs-literal {
+  color: #ff8fa9;
+}
+.hljs-string,
+.hljs-regexp {
+  color: #9fe0b9;
+}
+.hljs-number {
+  color: #ffc56e;
+}
+.hljs-comment {
+  color: #7f8cab;
+  font-style: italic;
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.function_,
+.hljs-type {
+  color: #8cc7f5;
+}
+.hljs-meta,
+.hljs-attr,
+.hljs-attribute {
+  color: #ffc56e;
+}
+.hljs-params,
+.hljs-property,
+.hljs-variable {
+  color: var(--code-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
